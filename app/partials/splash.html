@@ -1,1 +1,21 @@
-<p>hello</p>
+<div id="loginSplash" class="jumbotron">
+	<h3>Email</h3>
+	<input class="form-control" type="text" ng-model="loginEmail" id="loginEmail"/>
+	<h3>Password</h3>
+	<input type="password" class="form-control" ng-model="loginPassword" id="loginPassword">
+	<button id="registerButton" class="btn btn-primary" ng-click="registerUser()">Register</button>
+	<button id="loginButton"  ng-click="loginUser()" class="btn btn-primary">Login</button>
+</div>
+
+<div id="mainPage">
+<p>{{test}}</p>
+	<p>nav here</p>
+	<div class="container-fluid">
+		<div class="row">
+		<!-- the div below will repeat -->
+			<div ng-repeat="tag in matchedArray" class="col-md-3 jumbotron">
+					<p>{{tag.title}}</p>
+			</div>
+			<p>{{matchedArray}}</p>
+		</div>
+</div>
