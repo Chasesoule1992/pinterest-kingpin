@@ -106,6 +106,9 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray",
 			    				console.log("loadedPinsx", loadedPins[x]);
 			    				console.log("match sah");
 			    				$scope.matchedArray.push(loadedPins[x]);
+
+			    				//$scope.$apply is used when using anything not in angular fire (basically reupdate page)
+			    				$scope.$apply();
 			    			}
 			    		}
 
