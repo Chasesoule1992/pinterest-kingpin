@@ -195,6 +195,20 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 	}
 
 
+	$scope.likeAPost = function(tag){
+		console.log("tag ", tag);
+
+		var currentPinIdForLike = tag.$id;
+
+		console.log("currentPinIdForLike ", currentPinIdForLike);
+
+		var likeRef = new Firebase("https://kingpinteam.firebaseio.com/users/"+generalVariables.getUid()+"/likes");
+
+		likeRef.child(currentPinIdForLike).set(currentPinIdForLike);
+
+	}
+
+
 	
 
 

@@ -46,7 +46,7 @@
 			<div ng-repeat="tag in matchedArray" class="col-md-3">
           <div class="post-holder">
             <button ng-click="showModal(tag)" class="btn pinIt">Pin it</button>
-            <button class="btn likeIt">Like it</button>
+            <button ng-click="likeAPost(tag)" class="btn likeIt">Like it</button>
   					<img class="pinPic" src="{{tag.picture}}"/>
   					<p>{{tag.title}}</p>
         </div>
@@ -69,6 +69,7 @@
           <input type="text" class="form-control" placeholder="Search" />
           <!-- ng-repeat -->
           <div ng-repeat="item in boards" class="board-div">{{item.$id}} <button ng-click="showAddToBoard(item)" class="btn pinToBoard">Pin It</button></div>
+          <div id="create_board" class="board-div">Create board <button class="create_a_board">+</button></div>
         </div>
       </div>
       <div class="modal-footer">
