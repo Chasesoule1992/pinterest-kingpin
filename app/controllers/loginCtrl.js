@@ -174,7 +174,7 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 
 	$scope.showModalFromSingle = function(){
 		currentPinClickedOn;
-		$("#singlePostModal").modal("toggle")
+		$("#singlePostModal").modal("toggle");
 		$scope.showModal(currentPinClickedOn);
 	}
 
@@ -219,6 +219,7 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 		.then(function(){
 
 				$scope.addBoardArray.$add(currentPin);
+				$("#boardPicker").modal("toggle");
 
 		});
 
@@ -249,8 +250,6 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 	}
 
 	$scope.addBoard = function(){
-
-	
 			
 			$("#boardPicker").modal("toggle");
 			$("#boardModal").modal();
@@ -270,23 +269,6 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 			}
 		});
 
-
-		// var boardArray = $firebaseArray(boardRef);
-
-		// boardArray.$loaded()
-		// .then(function(data){
-		// 	console.log('value is', $("#addBoard").val());
-
-		// 	var titleOfBoard = $("#addBoard").val();
-
-		// 	console.log("titleOfBoard", titleOfBoard);
-
-		// 	boardArray.$add({
-		// 		title: titleOfBoard
-		// 	})
-
-
-		// });
 
 	}
 
