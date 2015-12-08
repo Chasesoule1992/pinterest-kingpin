@@ -9,7 +9,8 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 		
 		$scope.loginEmail;
 		$scope.loginPassword;
-		$scope.matchedArray=[];
+		$scope.pinsArray=[];
+		// $scope.matchedArray=[];
 
 		var ref = new Firebase("https://kingpinteam.firebaseio.com/users");
 
@@ -28,9 +29,24 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 				  } else {
 				    console.log("Successfully created user account with uid:", userData.uid);
 				    currentUid = userData.uid;
+   				   	$("#loginSplash").css({"display":"none"})
+				    $("#mainPage").fadeIn("slow");
+			    	    var pinRef = new Firebase("https://kingpinteam.firebaseio.com/pins");
+
+					    var pinArray = $firebaseArray(pinRef);
+
+				    pinArray
+				    .$loaded()
+				    .then(function(data){
+				    	console.log("hey", data);
+				    	$scope.loadedPins = data;
+				    	console.log($scope.loadedPins)
+			 	
+						});
+				    
 				
 					ref.child("/"+userData.uid).set({
-							"tags": "sports, food",
+							"tags": "",
 							"likes": {
 								"something": "something"
 							},
@@ -69,8 +85,8 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 	    .$loaded()
 	    .then(function(data){
 	    	console.log("hey", data);
-	    	loadedPins = data;
-
+	    	$scope.loadedPins = data;
+	    	console.log($scope.loadedPins)
 			    //go to current user uid/tags
 			    	//convert string of tags into array separated by commas
 			    	//for each item in array
@@ -88,37 +104,33 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 
 			   //this is how you get data from firebase
 			   userRef.on("value", function(snapshot) {
-				  console.log(snapshot.val().tags);
+				  // console.log("WHAT IS THIS????", snapshot.val().tags);
 
 				  //convert string of tags into array separated by commas
-			    	var tags = snapshot.val().tags.split(", ");
+			    	// var tags = loadedPins;
 
-			    	console.log("tags ", tags);
+			    	// console.log("tags ", tags);
 
 			    	//for each item in tags array (tags of current user)
-			    	for(var i = 0; i < tags.length; i++){
+			    	// for(var i = 0; i < tags.length; i++){
 
-			    		console.log("currents", loadedPins);
+			    		// for(var x = 0; x < loadedPins.length; x++){
+			    		// 	// console.log("hey", loadedPins[x].tags);
+			    		// 	// console.log("tags[i]", tags[i]);
 
+			    		// 	if(loadedPins[x].tags === tags[i]){
+			    		// 		console.log("loadedPinsx", loadedPins[x]);
+			    		// 		console.log("match sah");
+			    		// 		$scope.matchedArray.push(loadedPins[x]);
 
+			    		// 		//$scope.$apply is used when using anything not in angular fire (basically reupdate page)
+			    		// 		$scope.$apply();
+			    		// 	}
+			    		// }
 
-			    		for(var x = 0; x < loadedPins.length; x++){
-			    			// console.log("hey", loadedPins[x].tags);
-			    			// console.log("tags[i]", tags[i]);
+			    		// console.log("matchedArray", $scope.pinsArray);
 
-			    			if(loadedPins[x].tags === tags[i]){
-			    				console.log("loadedPinsx", loadedPins[x]);
-			    				console.log("match sah");
-			    				$scope.matchedArray.push(loadedPins[x]);
-
-			    				//$scope.$apply is used when using anything not in angular fire (basically reupdate page)
-			    				$scope.$apply();
-			    			}
-			    		}
-
-			    		console.log("matchedArray", $scope.matchedArray);
-
-			    	}
+			    	
 
 
 				}, function (errorObject) {
@@ -194,8 +206,5 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 
 	}
 
-
 	
-
-
 }]);

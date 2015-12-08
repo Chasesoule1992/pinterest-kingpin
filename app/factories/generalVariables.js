@@ -10,7 +10,11 @@ app.factory("generalVariables", ["$q", "$http",
 
   		setUid : function(value){
   			userUid = value;
-  		}
+  		},
+      getData: function() {
+        console.log("returning user interests", userInterests);
+        return userInterests;
+      },
   	}
 
   }]);
