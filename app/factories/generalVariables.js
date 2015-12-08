@@ -1,6 +1,6 @@
 app.factory("generalVariables", ["$q", "$http",
   function($q, $http) {
-
+    
   	var userUid;
 
   	return {

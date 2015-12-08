@@ -38,7 +38,7 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 							"boards": {
 								"somthing": "something"
 							}
-					})
+					});
 
 				  }
 				});
@@ -47,7 +47,7 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 		} else {
 			console.log("you gotta enter info");
 		}
-	}
+	};
 
 	$scope.loginUser = function(){
 
@@ -59,7 +59,7 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 	    console.log("Login Failed!", error);
 	  } else {
 	    console.log("Authenticated successfully with payload:", authData);
-	    $("#loginSplash").css({"display":"none"})
+	    $("#loginSplash").css({"display":"none"});
 	    $("#mainPage").fadeIn("slow");
 
 	    var pinRef = new Firebase("https://kingpinteam.firebaseio.com/pins");
@@ -79,6 +79,9 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 			    		//if pinID.tags === current item in array
 			    		//output something to screen
 			    console.log("authData ", authData.uid);
+
+
+			    // BEN GOT THE UID HERE AND PASSED IT TO THE FACTORY FOR LATER USE
 
 			    generalVariables.setUid(authData.uid);
 			    
