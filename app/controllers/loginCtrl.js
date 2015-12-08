@@ -248,6 +248,48 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 
 	}
 
+	$scope.addBoard = function(){
+
+	
+			
+			$("#boardPicker").modal("toggle");
+			$("#boardModal").modal();
+
+	}
+
+	$scope.addBoardToUser = function(){
+		var boardRef = new Firebase("https://kingpinteam.firebaseio.com/users/"+generalVariables.getUid()+"/boards");
+		
+		//set to new board
+		var title = $("#addBoard").val();
+
+		console.log("title ", title);
+		boardRef.child(title).set({
+			pins: {
+				"somePinHere":"somePinHere"
+			}
+		});
+
+
+		// var boardArray = $firebaseArray(boardRef);
+
+		// boardArray.$loaded()
+		// .then(function(data){
+		// 	console.log('value is', $("#addBoard").val());
+
+		// 	var titleOfBoard = $("#addBoard").val();
+
+		// 	console.log("titleOfBoard", titleOfBoard);
+
+		// 	boardArray.$add({
+		// 		title: titleOfBoard
+		// 	})
+
+
+		// });
+
+	}
+
 
 	
 

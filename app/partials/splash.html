@@ -69,7 +69,7 @@
           <input type="text" class="form-control" placeholder="Search" />
           <!-- ng-repeat -->
           <div ng-repeat="item in boards" class="board-div">{{item.$id}} <button ng-click="showAddToBoard(item)" class="btn pinToBoard">Pin It</button></div>
-          <div id="create_board" class="board-div">Create board <button class="create_a_board">+</button></div>
+          <div id="create_board" class="board-div">Create board <button ng-click="addBoard()" class="btn create_a_board">+</button></div>
         </div>
       </div>
       <div class="modal-footer">
@@ -96,6 +96,28 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- board Modal -->
+<div id="boardModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+      
+     </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <input id="addBoard" type="text" class="form-control" placeholder="title"/>
+        <button ng-click="addBoardToUser()" type="button" class="btn btn-default" data-dismiss="modal">Create</button>
       </div>
     </div>
 
