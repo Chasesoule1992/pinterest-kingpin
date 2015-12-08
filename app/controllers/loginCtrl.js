@@ -1,5 +1,5 @@
-app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "generalvariables",
-	function($q, $http, $scope, $firebaseArray, generalvariables) {
+app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "generalVariables",
+	function($q, $http, $scope, $firebaseArray, generalVariables) {
 
 		//private variables
 		var currentUid;
@@ -79,9 +79,11 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 			    		//output something to screen
 			    console.log("authData ", authData.uid);
 
-			    generalvariables.setUid(authData.uid);
+
+			    // BEN GOT THE UID HERE AND PASSED IT TO THE FACTORY FOR LATER USE
+			    generalVariables.setUid(authData.uid);
 			    
-			    console.log("user id ", generalvariables.getUid());
+			    console.log("user id ", generalVariables.getUid());
 
 			//go to current user uid/tags
 			   var userRef = new Firebase("https://kingpinteam.firebaseio.com/users/"+authData.uid);

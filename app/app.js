@@ -8,5 +8,9 @@ app.config(['$routeProvider',
 				templateUrl: './app/partials/splash.html',
 				controller: 'loginCtrl'
 			})
+			.when('/profile', {
+				templateUrl: './app/partials/profilePage.html',
+				controller: 'profileCtrl'
+			})
 			.otherwise('/splash');
 	}]);
