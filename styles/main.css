@@ -31,4 +31,10 @@
   width: 100%;
   height: 35px; }
 
+.pinPic {
+  cursor: pointer; }
+
+.singlePostPic {
+  width: 100%; }
+
 /*# sourceMappingURL=main.css.map */

@@ -47,14 +47,14 @@
           <div class="post-holder">
             <button ng-click="showModal(tag)" class="btn pinIt">Pin it</button>
             <button ng-click="likeAPost(tag)" class="btn likeIt">Like it</button>
-  					<img class="pinPic" src="{{tag.picture}}"/>
+  					<img ng-click="showSinglePostModal(tag)" class="pinPic" src="{{tag.picture}}"/>
   					<p>{{tag.title}}</p>
         </div>
 			</div>
 		</div>
 </div>
 
-<!-- Modal -->
+<!-- board Modal -->
 <div id="boardPicker" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -71,6 +71,28 @@
           <div ng-repeat="item in boards" class="board-div">{{item.$id}} <button ng-click="showAddToBoard(item)" class="btn pinToBoard">Pin It</button></div>
           <div id="create_board" class="board-div">Create board <button class="create_a_board">+</button></div>
         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- single post Modal -->
+<div id="singlePostModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+       <button class="btn pinIt" ng-click="showModalFromSingle()">pin it</button>
+       <button class="btn pinIt" ng-click="likeModalFromSingle()">Like it</button>
+     </div>
+      <div class="modal-body">
+          <img class="singlePostPic" src="{{singlePost.picture}}"/>
+          <p>{{singlePost.title}}<p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

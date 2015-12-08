@@ -4,6 +4,7 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 		//private variables
 		var currentUid;
 		var loadedPins;
+		var currentPinClickedOn;
 
 		$scope.test= "ben";
 		
@@ -160,6 +161,29 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 		//scope.apply
 	};
 
+	$scope.showSinglePostModal = function(tag){
+
+		$scope.singlePost = tag;
+		currentPinClickedOn = tag;
+
+		console.log("currentPinClickedOn", currentPinClickedOn);
+
+		console.log("single post ", $scope.singlePost);
+		$("#singlePostModal").modal();
+	}
+
+	$scope.showModalFromSingle = function(){
+		currentPinClickedOn;
+		$("#singlePostModal").modal("toggle")
+		$scope.showModal(currentPinClickedOn);
+	}
+
+	$scope.likeModalFromSingle = function(){
+		$scope.likeAPost(currentPinClickedOn);
+		$("#singlePostModal").modal("toggle");
+		console.log("should add like");
+	} 
+
 
 	$scope.showAddToBoard = function(item){
 		console.log("currentPin ", $scope.currentPin);
@@ -175,6 +199,8 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 		console.log("joinedWithChars ", joinedWithChars);
 
 		var addBoardRef = new Firebase("https://kingpinteam.firebaseio.com/users/"+generalVariables.getUid()+"/boards/"+joinedWithChars+"/pins");
+		
+
 		$scope.addBoardArray = $firebaseArray(addBoardRef);
 
 		console.log("addBoardArray ", $scope.addBoardArray);
@@ -183,9 +209,22 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 
 		var currentpinId = $scope.currentPin.$id
 
-		addBoardRef.child(currentpinId).set(currentpinId);
+		console.log("scope.currentpin ", $scope.currentPin);
 
-		$("#boardPicker").modal('toggle');
+		var currentPin = $scope.currentPin;
+
+		console.log("currentPin", currentPin);
+
+		$scope.addBoardArray.$loaded()
+		.then(function(){
+
+				$scope.addBoardArray.$add(currentPin);
+
+		});
+
+		// addBoardRef.child(currentpinId).set(currentPin);
+		// $("#boardPicker").modal('toggle')
+	
 
 
 
@@ -198,6 +237,7 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 	$scope.likeAPost = function(tag){
 		console.log("tag ", tag);
 
+		currentPinClickedOn = tag;
 		var currentPinIdForLike = tag.$id;
 
 		console.log("currentPinIdForLike ", currentPinIdForLike);
