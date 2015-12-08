@@ -1,5 +1,5 @@
-app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "generalvariables",
-	function($q, $http, $scope, $firebaseArray, generalvariables) {
+app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "generalVariables",
+	function($q, $http, $scope, $firebaseArray, generalVariables) {
 
 		//private variables
 		var currentUid;
@@ -79,9 +79,9 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 			    		//output something to screen
 			    console.log("authData ", authData.uid);
 
-			    generalvariables.setUid(authData.uid);
+			    generalVariables.setUid(authData.uid);
 			    
-			    console.log("user id ", generalvariables.getUid());
+			    console.log("user id ", generalVariables.getUid());
 
 			//go to current user uid/tags
 			   var userRef = new Firebase("https://kingpinteam.firebaseio.com/users/"+authData.uid);
@@ -131,10 +131,69 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 			}
 	    });
 
+
 	
 	//authWithPassword here and then show main page	
 
 	};
+
+	$scope.showModal = function(tag){
+		$("#boardPicker").modal();
+		
+		console.log("tag", tag);
+
+		$scope.currentPin = tag;
+
+		//reference to firebase
+		var boardRef = new Firebase("https://kingpinteam.firebaseio.com/users/"+generalVariables.getUid()+"/boards");
+
+		var boardArray = $firebaseArray(boardRef);
+
+
+		$scope.boards = boardArray;
+
+		console.log("boardArray ", boardArray);
+
+
+		//get Boards
+		//output to dom in ng-repeat from array
+		//scope.apply
+	};
+
+
+	$scope.showAddToBoard = function(item){
+		console.log("currentPin ", $scope.currentPin);
+
+		console.log("item ", item);
+
+		var splitBoardTitle = item.$id.split(" ");
+
+		console.log("splitBoardTitle", splitBoardTitle);
+
+		var joinedWithChars = splitBoardTitle.join("%20");
+
+		console.log("joinedWithChars ", joinedWithChars);
+
+		var addBoardRef = new Firebase("https://kingpinteam.firebaseio.com/users/"+generalVariables.getUid()+"/boards/"+joinedWithChars+"/pins");
+		$scope.addBoardArray = $firebaseArray(addBoardRef);
+
+		console.log("addBoardArray ", $scope.addBoardArray);
+
+		console.log("$scope.currentpin.$id", $scope.currentPin.$id);
+
+		var currentpinId = $scope.currentPin.$id
+
+		addBoardRef.child(currentpinId).set(currentpinId);
+
+		$("#boardPicker").modal('toggle');
+
+
+
+		//get currentpin.$id
+		// add to item.$id (which is the current board clicked)
+
+	}
+
 
 	
 
