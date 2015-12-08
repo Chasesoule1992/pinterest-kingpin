@@ -1,5 +1,5 @@
-app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray",
-	function($q, $http, $scope, $firebaseArray) {
+app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "generalvariables",
+	function($q, $http, $scope, $firebaseArray, generalvariables) {
 
 		//private variables
 		var currentUid;
@@ -50,7 +50,7 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray",
 
 	$scope.loginUser = function(){
 
-		ref.authWithPassword({
+	  ref.authWithPassword({
 	  email    : $scope.loginEmail,
 	  password : $scope.loginPassword
 	}, function(error, authData) {
@@ -78,6 +78,10 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray",
 			    		//if pinID.tags === current item in array
 			    		//output something to screen
 			    console.log("authData ", authData.uid);
+
+			    generalvariables.setUid(authData.uid);
+			    
+			    console.log("user id ", generalvariables.getUid());
 
 			//go to current user uid/tags
 			   var userRef = new Firebase("https://kingpinteam.firebaseio.com/users/"+authData.uid);

@@ -43,7 +43,8 @@
 	<div class="container-fluid">
 		<div class="row">
 		<!-- the div below will repeat -->
-			<div ng-repeat="tag in matchedArray" class="col-md-3 jumbotron">
+			<div ng-repeat="tag in matchedArray" class="col-md-3">
+					<img class="pinPic" src="{{tag.picture}}"/>
 					<p>{{tag.title}}</p>
 			</div>
 		</div>
