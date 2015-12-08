@@ -36,20 +36,104 @@
 
     <h1> PUT USER EMAIL HERE </h1>
 
-    <div>PUT LINKS TO BOARDS PINS LIKES FOLLOWERS HERE </div>
+    <div>
+      <ul>
+        <li ng-click="showUserBoards()" class="btn">Boards</li>
+        <li ng-click="showUserPins()" class="btn">Pins</li>
+        <li ng-click="showUserLikes()" class="btn">Likes</li>
+      </ul>
+    </div>
 
-
-    <div class="container-fluid">
+    <!-- BOARD OUTPUT DIV -->
+    <div id="userBoards" class="container-fluid">
       <div class="row">
+            <div class="col-md-3">
+              Create A Board
+              <button ng-click="showBoard()" class="btn" href="">+</button>
+            </div>
+
         <div ng-repeat="board in userBoardArray" class="col-md-3">
           
-            <h2>{{ board.$id }}</h2>
+            <div>
+              <h2>{{ board.$id }}</h2>
+              <div ng-repeat="pin in board.pins">
+                <p>{{pin.title}}</p>
+                <img class="boardOutput" src="{{pin.picture}}"/>
+              </div>
+
+            </div>
     
         </div>
       </div>
     </div>
 
 
+    <!-- Pin OUTPUT DIV -->
+    <div id="userPins" class="container-fluid">
+      <div class="row">
+            <div class="col-md-3">
+              Add a Pin
+              <button ng-click="showPinModal()" class="btn" href="">+</button>
+            </div>
+    
+        </div>
+    </div>
+
+    <!-- Like OUTPUT DIV -->
+    <div id="userLikes" class="container-fluid">
+      <div class="row">
+            <div class="col-md-3">
+              Like woah
+              <button class="btn" href="">+</button>
+            </div>
+    
+        </div>
+    </div>
+
+  <!-- board Modal -->
+  <div id="boardModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+        
+       </div>
+        <div class="modal-body">
+          
+        </div>
+        <div class="modal-footer">
+          <input id="addBoard" type="text" class="form-control" placeholder="title"/>
+          <button ng-click="addBoardToUser()" type="button" class="btn btn-default" data-dismiss="modal">Create</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- board Modal -->
+  <div id="pinModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+        
+       </div>
+        <div class="modal-body">
+          
+        </div>
+        <div class="modal-footer">
+          <input id="pinTitle" type="text" class="form-control" placeholder="title"/>
+          <input id="pinUrl" type="text" class="form-control" placeholder="url"/>
+          <input id="pinPicUrl" type="text" class="form-control" placeholder="picUrl"/>
+          <input id="pinTags" type="text" class="form-control" placeholder="tags"/>
+          <button ng-click="addPinToUser()" type="button" class="btn btn-default" data-dismiss="modal">Create</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
 </div>  <!-- closing div for "mainContent" -->
 

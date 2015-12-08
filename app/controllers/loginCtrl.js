@@ -37,7 +37,7 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 							"boards": {
 								"somthing": "something"
 							}
-					})
+					});
 
 				  }
 				});
@@ -46,7 +46,7 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 		} else {
 			console.log("you gotta enter info");
 		}
-	}
+	};
 
 	$scope.loginUser = function(){
 
@@ -58,7 +58,7 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 	    console.log("Login Failed!", error);
 	  } else {
 	    console.log("Authenticated successfully with payload:", authData);
-	    $("#loginSplash").css({"display":"none"})
+	    $("#loginSplash").css({"display":"none"});
 	    $("#mainPage").fadeIn("slow");
 
 	    var pinRef = new Firebase("https://kingpinteam.firebaseio.com/pins");

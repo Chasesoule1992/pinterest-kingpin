@@ -11,6 +11,6 @@ app.factory("generalVariables", ["$q", "$http",
           setUid : function(value){
               userUid = value;
           }
-      }
+      };
 
   }]);
