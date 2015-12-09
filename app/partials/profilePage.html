@@ -75,6 +75,19 @@
               Add a Pin
               <button ng-click="showPinModal()" class="btn" href="">+</button>
             </div>
+
+            <div ng-repeat="board in userBoardArray" class="col-md-3">
+          
+            <div>
+              <h2>{{ pin.$id }}</h2>
+              <div ng-repeat="pin in board.pins">
+                <p>{{ pin.title }}</p>
+                <img src="{{pin.picture}}"/>
+              </div>
+
+            </div>
+    
+        </div>
     
         </div>
     </div>
