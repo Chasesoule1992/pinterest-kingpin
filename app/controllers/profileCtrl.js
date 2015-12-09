@@ -1,6 +1,7 @@
 app.controller("profileCtrl", 
 	["$q", "$http", "$scope", "$firebaseArray", "generalVariables",
 	function($q, $http, $scope, $firebaseArray, generalVariables) {
+        
 
 		$scope.boardObjects = [];
 
@@ -75,12 +76,39 @@ app.controller("profileCtrl",
 
     		var pinRef = new Firebase("https://kingpinteam.firebaseio.com/pins");
 
-    		pinRef.push({
-    			"title" : pinTitle,
-    			"pinUrl" : pinUrl,
-    			"picture": pinPicUrl,
-    			"tags": pinTags
-    		})
+            $http.get("http://api.embed.ly/1/extract?key=111b49d9509541f0ba9a4af415b1aefc&url="+pinUrl+"&maxwidth=500").success(
+
+            //if successful
+            function(object){
+              //do this 
+                //this returns an array that can be joined to other array
+                console.log("objectFromJsonAPI>>>>>>>>>>", object.images[0].url);
+              //join this into completeArray
+
+            // resolve(object.songs);
+
+            pinRef.push({
+             "title" : pinTitle,
+             "pinUrl" : pinUrl,
+             "picture": object.images[0].url,
+             "tags": pinTags
+            })
+
+            
+            //if not successful
+          }, function (error){
+              //do this 
+              console.log("error");
+              reject(error);
+            }
+          );
+
+    		// pinRef.push({
+    		// 	"title" : pinTitle,
+    		// 	"pinUrl" : pinUrl,
+    		// 	"picture": pinPicUrl,
+    		// 	"tags": pinTags
+    		// })
 
     	};
 
