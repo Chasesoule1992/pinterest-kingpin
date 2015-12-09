@@ -11,6 +11,10 @@ app.config(['$routeProvider',
 			.when('/profile', {
 				templateUrl: './app/partials/profilePage.html',
 				controller: 'profileCtrl'
-			})
-			.otherwise('/splash');
+			}).
+			when("/main", {
+				templateUrl: './app/partials/mainPage.html',
+				controller: 'mainCtrl'
+			});
+			// .otherwise('/splash');
 	}]);

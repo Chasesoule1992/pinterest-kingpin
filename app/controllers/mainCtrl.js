@@ -1,5 +1,7 @@
-app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "generalVariables",
+app.controller("mainCtrl", ["$q", "$http", "$scope", "$firebaseArray", "generalVariables",
 	function($q, $http, $scope, $firebaseArray, generalVariables) {
+
+		console.log("generalVariables.getUid ", generalVariables.getUid());
 
 		//private variables
 		var currentUid;
@@ -14,68 +16,23 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 
 		var ref = new Firebase("https://kingpinteam.firebaseio.com/users");
 
+		var pinRef = new Firebase("https://kingpinteam.firebaseio.com/pins");
 
-		//register user
-		$scope.registerUser  = function(){
-			if( $scope.loginEmail !== "" && $scope.loginPassword !== "" && $scope.loginEmail !== undefined && $scope.loginPassword !== undefined){
-				console.log("$scope.loginEmail ", $scope.loginEmail);
-				console.log("$scope.loginPassword ", $scope.loginPassword);
+	    var pinArray = $firebaseArray(pinRef);
 
-				ref.createUser({
-				  email    : $scope.loginEmail,
-				  password : $scope.loginPassword
-				}, function(error, userData) {
-				  if (error) {
-				    console.log("Error creating user:", error);
-				  } else {
-				    console.log("Successfully created user account with uid:", userData.uid);
-				    currentUid = userData.uid;
-				
-					ref.child("/"+userData.uid).set({
-							"tags": "sports, food",
-							"likes": {
-								"something": "something"
-							},
-							"boards": {
-								"somthing": "something"
-							}
-					});
+	    pinArray
+	    .$loaded()
+	    .then(function(data){
 
-				  }
-				});
+	    	$scope.matchedArray = pinArray;
+
+	    	console.log(generalVariables.getUid());
+
+	    	});
 
 
-		} else {
-			console.log("you gotta enter info");
-		}
-	};
 
-	$scope.loginUser = function(){
-
-	console.log("general vars uid ", generalVariables.getUid());
-
-	  ref.authWithPassword({
-	  email    : $scope.loginEmail,
-	  password : $scope.loginPassword
-	}, function(error, authData) {
-	  if (error) {
-	    console.log("Login Failed!", error);
-	  } else {
-	    console.log("Authenticated successfully with payload:", authData);
-	    $("#loginSplash").css({"display":"none"});
-	    $("#mainPage").fadeIn("slow");
-	    generalVariables.setUid(authData.uid)
-
-			}
-	    });
-
-
-	
-	//authWithPassword here and then show main page	
-
-	};
-
-	$scope.showModal = function(tag){
+		$scope.showModal = function(tag){
 		$("#boardPicker").modal();
 		
 		console.log("tag", tag);
@@ -210,7 +167,4 @@ app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "general
 	}
 
 
-	
-
-
-}]);
+	}])
