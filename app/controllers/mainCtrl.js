@@ -34,6 +34,8 @@ app.controller("mainCtrl", ["$q", "$http", "$scope", "$firebaseArray", "generalV
 
 		$scope.showModal = function(tag){
 		$("#boardPicker").modal();
+
+		$scope.currentImage = tag.picture;
 		
 		console.log("tag", tag);
 
@@ -57,7 +59,10 @@ app.controller("mainCtrl", ["$q", "$http", "$scope", "$firebaseArray", "generalV
 
 	$scope.showSinglePostModal = function(tag){
 
+
+
 		$scope.singlePost = tag;
+		$scope.currentImage = tag.picture;
 		currentPinClickedOn = tag;
 
 		console.log("currentPinClickedOn", currentPinClickedOn);

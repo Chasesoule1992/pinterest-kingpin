@@ -1,17 +1,39 @@
+body {
+  background-color: #F1F1F1; }
+
+#loginSplash {
+  width: 50%;
+  padding: 20px 20px 100px;
+  margin-left: 25%;
+  margin-top: 95px;
+  border-radius: 10px; }
+
 .pinPic {
   width: 100%;
-  height: auto; }
+  height: auto;
+  border-radius: 5px; }
 
 .post-holder {
-  position: relative; }
+  position: relative;
+  height: 360px;
+  margin-bottom: 70px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 4px 7px #B7B7B7; }
   .post-holder .pinIt, .post-holder .likeIt {
     width: 70px;
     position: absolute;
-    display: none; }
+    display: none;
+    background-color: #BD081C;
+    color: white; }
   .post-holder .likeIt {
     margin-left: 80px; }
   .post-holder:hover .pinIt, .post-holder:hover .likeIt {
     display: block; }
+  .post-holder p {
+    padding-left: 20px;
+    padding-top: 6px;
+    color: #5A5A5A; }
 
 .modalInfo {
   width: 50%;
@@ -35,12 +57,23 @@
   width: 100%; }
 
 .boardOutput {
-  width: 50px; }
+  width: 100%; }
 
 #userPins, #userLikes {
   display: none; }
 
 #pin_output {
   width: 100%; }
+
+.addBoardImage {
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 90px; }
+
+#activeSauce {
+  background-color: #BD081C;
+  color: white; }
+  #activeSauce a {
+    color: white; }
 
 /*# sourceMappingURL=main.css.map */
