@@ -113,6 +113,10 @@ app.controller("profileCtrl",
     	};
 
 
+        $scope.logUserOut = function(){
+            generalVariables.logOutUser();
+        }
+
 
 
 	}]);

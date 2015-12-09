@@ -170,6 +170,10 @@ app.controller("mainCtrl", ["$q", "$http", "$scope", "$firebaseArray", "generalV
 			}
 		});
 
+		$scope.logOutUser = function(){
+			generalVariables.logOutUser();
+		}
+
 
 	}
 
