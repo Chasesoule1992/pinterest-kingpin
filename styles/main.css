@@ -43,4 +43,7 @@
 #userPins, #userLikes {
   display: none; }
 
+#pin_output {
+  width: 100%; }
+
 /*# sourceMappingURL=main.css.map */

@@ -34,8 +34,6 @@
 
 <div class="mainContent">
 
-    <h1> PUT USER EMAIL HERE </h1>
-
     <div>
       <ul>
         <li ng-click="showUserBoards()" class="btn">Boards</li>
@@ -76,13 +74,13 @@
               <button ng-click="showPinModal()" class="btn" href="">+</button>
             </div>
 
-            <div ng-repeat="board in userBoardArray" class="col-md-3">
+            <div class="col-md-3" ng-repeat="board in userBoardArray" class="col-md-3">
           
             <div>
               <h2>{{ pin.$id }}</h2>
               <div ng-repeat="pin in board.pins">
                 <p>{{ pin.title }}</p>
-                <img src="{{pin.picture}}"/>
+                <img id="pin_output" src="{{pin.picture}}"/>
               </div>
 
             </div>
