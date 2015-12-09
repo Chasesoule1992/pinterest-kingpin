@@ -22,6 +22,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#/profile">Profile</a></li>
+        <li><a href="#/splash">Log Out</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -42,9 +43,9 @@
     <!-- BOARD OUTPUT DIV -->
     <div id="userBoards" class="container-fluid">
       <div class="row">
-            <div class="col-md-3">
-              Create A Board
-              <button ng-click="showBoard()" class="btn" href="">+</button>
+            <div class="block_it post-holder">
+              <p class="addYoPin">Create A Board</p>
+              <button ng-click="showBoard()" class="btn spec_pin_b glyphicon glyphicon-plus" href=""></button>
             </div>
 
         <div ng-repeat="board in userBoardArray" class="col-md-3">
@@ -66,9 +67,9 @@
     <!-- Pin OUTPUT DIV -->
     <div id="userPins" class="container-fluid">
       <div class="row">
-            <div class="col-md-3">
-              Add a Pin
-              <button ng-click="showPinModal()" class="btn" href="">+</button>
+            <div class="block_it post-holder">
+              <p class="addYoPin">Add a Pin</p>
+              <button ng-click="showPinModal()" class="btn spec_pin_b glyphicon glyphicon-plus" href=""></button>
             </div>
 
             <div class="col-md-3" ng-repeat="board in userBoardArray" class="col-md-3">
