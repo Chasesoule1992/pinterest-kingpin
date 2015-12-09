@@ -3,6 +3,8 @@ app.controller("mainCtrl", ["$q", "$http", "$scope", "$firebaseArray", "generalV
 
 		console.log("generalVariables.getUid ", generalVariables.getUid());
 
+		$("body").css({"background-image":"none"});
+
 		//private variables
 		var currentUid;
 		var loadedPins;

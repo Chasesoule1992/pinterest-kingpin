@@ -1,6 +1,7 @@
 app.controller("loginCtrl", ["$q", "$http", "$scope", "$firebaseArray", "generalVariables",
 	function($q, $http, $scope, $firebaseArray, generalVariables) {
 
+
 		//private variables
 		var currentUid;
 		var loadedPins;
