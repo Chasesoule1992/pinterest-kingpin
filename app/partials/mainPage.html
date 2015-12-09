@@ -79,7 +79,7 @@
        <button class="btn pinIt" ng-click="likeModalFromSingle()">Like it</button>
      </div>
       <div class="modal-body">
-          <img class="singlePostPic" src="{{singlePost.picture}}"/>
+          <a href="{{singlePost.pinUrl}}" target="_blank"> <img class="singlePostPic" src="{{singlePost.picture}}"/></a>
           <p>{{singlePost.title}}<p>
       </div>
       <div class="modal-footer">
