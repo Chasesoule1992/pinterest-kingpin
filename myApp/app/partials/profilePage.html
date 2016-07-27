@@ -1,0 +1,148 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#/main">Main Page <span class="sr-only">(current)</span></a></li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" ng-model="filterPins">
+        </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#/profile">Profile</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+<div class="mainContent">
+
+    <div>
+      <ul>
+        <li ng-click="showUserBoards()" class="btn">Boards</li>
+        <li ng-click="showUserPins()" class="btn">Pins</li>
+        <li ng-click="showUserLikes()" class="btn">Likes</li>
+      </ul>
+    </div>
+
+    <!-- BOARD OUTPUT DIV -->
+    <div id="userBoards" class="container-fluid">
+      <div class="row">
+            <div class="col-md-3">
+              Create A Board
+              <button ng-click="showBoard()" class="btn" href="">+</button>
+            </div>
+
+        <div ng-repeat="board in userBoardArray" class="col-md-3">
+          
+            <div>
+              <h2>{{ board.$id }}</h2>
+              <div class="post-holder" ng-repeat="pin in board.pins">
+                <p>{{pin.title}}</p>
+                <img class="boardOutput" src="{{pin.picture}}"/>
+              </div>
+
+            </div>
+    
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Pin OUTPUT DIV -->
+    <div id="userPins" class="container-fluid">
+      <div class="row">
+            <div class="col-md-3">
+              Add a Pin
+              <button ng-click="showPinModal()" class="btn" href="">+</button>
+            </div>
+
+            <div class="col-md-3" ng-repeat="board in userBoardArray" class="col-md-3">
+          
+            <div>
+              <h2>{{ pin.$id }}</h2>
+              <div ng-repeat="pin in board.pins">
+                <p>{{ pin.title }}</p>
+                <img id="pin_output" src="{{pin.picture}}"/>
+              </div>
+
+            </div>
+    
+        </div>
+    
+        </div>
+    </div>
+
+    <!-- Like OUTPUT DIV -->
+    <div id="userLikes" class="container-fluid">
+      <div class="row">
+            <div class="col-md-3">
+              Like woah
+              <button class="btn" href="">+</button>
+            </div>
+    
+        </div>
+    </div>
+
+  <!-- board Modal -->
+  <div id="boardModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+        
+       </div>
+        <div class="modal-body">
+          
+        </div>
+        <div class="modal-footer">
+          <input id="addBoard" type="text" class="form-control" placeholder="title"/>
+          <button ng-click="addBoardToUser()" type="button" class="btn btn-default" data-dismiss="modal">Create</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- board Modal -->
+  <div id="pinModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+        
+       </div>
+        <div class="modal-body">
+          
+        </div>
+        <div class="modal-footer">
+          <input id="pinTitle" type="text" class="form-control" placeholder="title"/>
+          <input id="pinUrl" type="text" class="form-control" placeholder="url"/>
+          <input id="pinPicUrl" type="text" class="form-control" placeholder="picUrl"/>
+          <input id="pinTags" type="text" class="form-control" placeholder="tags"/>
+          <button ng-click="addPinToUser()" type="button" class="btn btn-default" data-dismiss="modal">Create</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>  <!-- closing div for "mainContent" -->
+
+
